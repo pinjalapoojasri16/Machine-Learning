@@ -1,0 +1,263 @@
+/* 🌤 Base setup */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f7faff;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+/* 💙 Header */
+header {
+  text-align: center;
+  margin: 25px 0;
+}
+
+h1 {
+  color: #0056b3;
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+header p {
+  color: #555;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+/* 🧩 App container */
+.app-container {
+  width: 95%;
+  margin: auto;
+}
+
+/* 🌈 Two-column layout: Patient Info (Left) + Model/Summary/Report (Right) */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: start;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* 👩‍⚕ Patient Information Card */
+.input-card {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #007bff;
+  transition: all 0.3s ease;
+}
+.input-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.input-card h2 {
+  font-size: 18px;
+  color: #007bff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 📋 Input fields layout */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  flex: 1.2;
+  text-align: left;
+}
+
+input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  height: 12px;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+}
+
+/* ⚙ Right column containing Model, Summary, Report */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ⚙ Model Card */
+.model-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  border-left: 5px solid #6c63ff;
+  transition: all 0.3s ease;
+}
+.model-card:hover {
+  transform: translateY(-3px);
+}
+.model-card h2 {
+  font-size: 18px;
+  color: #6c63ff;
+  margin-bottom: 15px;
+}
+
+/* Dropdown */
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+select:focus {
+  outline: none;
+  border-color: #6c63ff;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.4);
+}
+
+/* Predict Button */
+.predict-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.predict-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #003c82);
+  transform: translateY(-2px);
+}
+
+/* ✅ Prediction Summary */
+.summary-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #2ecc71;
+  transition: all 0.3s ease;
+}
+.summary-card:hover {
+  transform: translateY(-3px);
+}
+.summary-card h2 {
+  color: #007bff;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.summary-card p {
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+.good {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.bad {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+/* 📊 Classification Report (under model & summary) */
+.report-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  border-left: 5px solid #6c63ff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  transition: all 0.3s ease;
+}
+.report-card:hover {
+  transform: translateY(-3px);
+}
+
+.report-card h2 {
+  color: #6c63ff;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 17px;
+}
+
+/* Table style */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: center;
+}
+
+th {
+  background: #007bff;
+  color: white;
+  padding: 8px;
+}
+
+td {
+  border: 1px solid #eee;
+  padding: 7px;
+  background: #f9fbff;
+}
+
+/* 📱 Responsive */
+@media (max-width: 1100px) {
+  .main-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-card,
+  .model-card,
+  .summary-card,
+  .report-card {
+    width: 90%;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  input,
+  select {
+    width: 100%;
+  }
+}

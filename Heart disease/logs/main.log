@@ -1,0 +1,24 @@
+2025-11-12 11:49:09,604 - INFO - The Data loaded Successfully
+2025-11-12 11:49:09,604 - INFO - We have: 1025 Rows and 14 Columns
+2025-11-12 11:49:09,605 - INFO - Missing values:
+age         0
+sex         0
+cp          0
+trestbps    0
+chol        0
+fbs         0
+restecg     0
+thalach     0
+exang       0
+oldpeak     0
+slope       0
+ca          0
+thal        0
+target      0
+dtype: int64
+2025-11-12 11:49:09,609 - INFO - training sample 820,820  testing sample   205,205
+2025-11-12 11:49:09,628 - WARNING -  * Debugger is active!
+2025-11-12 11:49:09,638 - INFO -  * Debugger PIN: 230-421-540
+2025-11-12 11:49:09,740 - INFO - 127.0.0.1 - - [12/Nov/2025 11:49:09] "GET / HTTP/1.1" 200 -
+2025-11-12 11:49:09,934 - INFO - 127.0.0.1 - - [12/Nov/2025 11:49:09] "GET /static/style.css HTTP/1.1" 200 -
+2025-11-12 11:49:10,216 - INFO - 127.0.0.1 - - [12/Nov/2025 11:49:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

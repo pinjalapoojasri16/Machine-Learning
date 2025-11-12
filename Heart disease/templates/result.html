@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="result-container">
+    <div class="summary-card">
+      <h2>✅ Prediction Summary</h2>
+      <p><strong>Model Used:</strong> {{ model }}</p>
+      <p><strong>Predicted Output:</strong>
+        {% if prediction == 1 %}
+          <span class="bad">⚠ Heart Disease Detected</span>
+        {% else %}
+          <span class="good">💚 No Heart Disease</span>
+        {% endif %}
+      </p>
+      <p><strong>Test Accuracy:</strong> {{ "%.2f"|format(accuracy) }}%</p>
+    </div>
+
+    <div class="report-card">
+      <h2>📊 Classification Report</h2>
+      <table>
+        <tr><th>Label</th><th>Precision</th><th>Recall</th><th>F1-Score</th></tr>
+        {% for label, metrics in report.items() %}
+          {% if metrics is mapping %}
+          <tr>
+            <td>{{ label }}</td>
+            <td>{{ "%.2f"|format(metrics['precision']) }}</td>
+            <td>{{ "%.2f"|format(metrics['recall']) }}</td>
+            <td>{{ "%.2f"|format(metrics['f1-score']) }}</td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+      </table>
+    </div>
+
+    <a href="/" class="back-btn">⬅ Back</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>❤ Heart Disease Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="app-container">
+    <header>
+      <h1>💙 Heart Disease Prediction Dashboard</h1>
+      <p>Enter patient details, select a model, and get prediction results instantly.</p>
+    </header>
+
+    <!-- 🌈 TWO-COLUMN LAYOUT -->
+    <form method="POST" action="/predict">
+      <div class="main-grid">
+
+        <!-- 👩‍⚕ Patient Info (Left) -->
+        <div class="input-card">
+          <h2>👩‍⚕ Patient Information</h2>
+          <div class="form-grid">
+            <div class="form-row"><label>Age</label><input type="number" name="feature1" placeholder="e.g. 52" required></div>
+            <div class="form-row"><label>Sex (1=Male, 0=Female)</label><input type="number" name="feature2" placeholder="e.g. 1" required></div>
+            <div class="form-row"><label>Chest Pain Type (0–3)</label><input type="number" name="feature3" placeholder="e.g. 0" required></div>
+            <div class="form-row"><label>Resting BP (mm Hg)</label><input type="number" name="feature4" placeholder="e.g. 125" required></div>
+            <div class="form-row"><label>Cholesterol (mg/dl)</label><input type="number" name="feature5" placeholder="e.g. 212" required></div>
+            <div class="form-row"><label>Fasting Blood Sugar (>120 mg/dl: 1/0)</label><input type="number" name="feature6" placeholder="e.g. 0" required></div>
+            <div class="form-row"><label>Resting ECG (0–2)</label><input type="number" name="feature7" placeholder="e.g. 1" required></div>
+            <div class="form-row"><label>Max Heart Rate</label><input type="number" name="feature8" placeholder="e.g. 168" required></div>
+            <div class="form-row"><label>Exercise Induced Angina (1/0)</label><input type="number" name="feature9" placeholder="e.g. 0" required></div>
+            <div class="form-row"><label>Oldpeak (ST Depression)</label><input type="number" step="0.1" name="feature10" placeholder="e.g. 1.0" required></div>
+            <div class="form-row"><label>Slope (0–2)</label><input type="number" name="feature11" placeholder="e.g. 2" required></div>
+            <div class="form-row"><label>Major Vessels (0–3)</label><input type="number" name="feature12" placeholder="e.g. 0" required></div>
+            <div class="form-row"><label>Thal (1=Normal, 2=Fixed, 3=Reversible)</label><input type="number" name="feature13" placeholder="e.g. 3" required></div>
+          </div>
+        </div>
+
+        <!-- ⚙ Right Column -->
+        <div class="right-column">
+
+          <!-- Select Model -->
+          <div class="model-card">
+            <h2>⚙ Select Model</h2>
+            <select name="model" required>
+              {% for m in models %}
+              <option value="{{ m }}">{{ m }}</option>
+              {% endfor %}
+            </select>
+            <button type="submit" class="predict-btn">🔍 Predict</button>
+          </div>
+
+          <!-- ✅ Prediction Summary -->
+          <div class="summary-card">
+            <h2>✅ Prediction Summary</h2>
+            {% if result is not none %}
+              <p><strong>Model Used:</strong> {{ model_used }}</p>
+              <p><strong>Prediction:</strong>
+                {% if result == 1 %}
+                  <span class="bad">⚠ Heart Disease Detected</span>
+                {% elif result == 0 %}
+                  <span class="good">💚 No Heart Disease</span>
+                {% else %}
+                  {{ result }}
+                {% endif %}
+              </p>
+              {% if accuracy %}
+                <p><strong>Accuracy:</strong> {{ "%.2f"|format(accuracy) }}%</p>
+              {% endif %}
+            {% else %}
+              <p>No prediction yet. Please enter details and select a model.</p>
+            {% endif %}
+          </div>
+
+          <!-- 📊 Classification Report -->
+          {% if report %}
+          <div class="report-card">
+            <h2>📊 Classification Report</h2>
+            <table>
+              <tr>
+                <th>Label</th><th>Precision</th><th>Recall</th><th>F1-Score</th>
+              </tr>
+              {% for label, metrics in report.items() %}
+                {% if metrics is mapping %}
+                <tr>
+                  <td>{{ label }}</td>
+                  <td>{{ "%.2f"|format(metrics['precision']) }}</td>
+                  <td>{{ "%.2f"|format(metrics['recall']) }}</td>
+                  <td>{{ "%.2f"|format(metrics['f1-score']) }}</td>
+                </tr>
+                {% endif %}
+              {% endfor %}
+            </table>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
